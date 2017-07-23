@@ -39,8 +39,13 @@ from __future__ import (print_function, division, unicode_literals,
 
 # thanks to absolute imports, this really imports the glib binding and not this
 # module again
-import glib
-import gobject
+
+try:
+    from gi.repository import GObject as gobject
+    from gi.repository import GLib as glib
+except ImportError:
+    import glib
+    import gobject
 
 
 class _ObserverMixin(object):
